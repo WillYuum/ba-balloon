@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 879893406}
   - component: {fileID: 879893405}
   - component: {fileID: 879893404}
+  - component: {fileID: 879893407}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -319,6 +320,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879893407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879893403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d19880306750e147a857da617c28a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3519430190496288536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 3519430190648286846, guid: 901138672ad6e6e468ece45a4b0d6098,
         type: 3}
       propertyPath: m_Name
-      value: AIrBalloon
+      value: AirBalloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 901138672ad6e6e468ece45a4b0d6098, type: 3}

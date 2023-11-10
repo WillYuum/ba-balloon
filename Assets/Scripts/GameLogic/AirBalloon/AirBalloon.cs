@@ -1,35 +1,14 @@
 using UnityEngine;
 
-public class AirBalloonCollider : MonoBehaviour
+public class AirBalloon : MonoBehaviour
 {
 
+    [SerializeField] private Transform _centerOfAirBalloon;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+
+    public Transform GetCenterOfAirBalloon()
     {
-        Collider2D[] otherCollider = new Collider2D[1];
-        int otherCollidersCount = collision.GetContacts(otherCollider);
-
-        if (otherCollidersCount == 0) return;
-
-        switch (otherCollider[0].name)
-        {
-            case "balloon":
-                TriggerCollisionWithBalloon();
-                break;
-            case "basket":
-                TriggerCollisionWithBasket();
-                break;
-        }
+        return _centerOfAirBalloon;
     }
-
-    private void TriggerCollisionWithBalloon()
-    {
-
-    }
-    private void TriggerCollisionWithBasket()
-    {
-
-    }
-
-
 }
