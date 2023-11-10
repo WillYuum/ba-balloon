@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3519430190648286832}
   - component: {fileID: 3519430190648286847}
+  - component: {fileID: 2089891014}
   - component: {fileID: 131325784694198171}
   m_Layer: 0
   m_Name: AIrBalloon
@@ -148,6 +149,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2446af3ed775d8d439eff9723eeb97f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2089891014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3519430190648286846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1789980191b782947b9e2485268134dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ascentForce: 5
+  _descentForce: 2
+  _maxAscentSpeed: 5
+  _damping: 0.5
 --- !u!50 &131325784694198171
 Rigidbody2D:
   serializedVersion: 4
