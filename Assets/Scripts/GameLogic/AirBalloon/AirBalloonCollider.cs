@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AirBalloonCollider : MonoBehaviour
+public class AirBalloon : MonoBehaviour
 {
 
 
