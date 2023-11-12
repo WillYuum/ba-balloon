@@ -7,6 +7,13 @@ public class AirBalloonFloatController : MonoBehaviour
     [SerializeField] private float _maxAscentSpeed = 5f;  // Maximum ascent speed
     [SerializeField] private float _damping = 0.5f;       // Damping factor for reducing momentum when not pressing space
 
+
+    [HideInInspector] public float AirBalloonTiltAngle = 0.0f;
+    private float _clampedAngle = 35.0f;
+    private const float _resetAngleSpeed = 0.01f;
+    private float _currentResetAngleSpeed = 0.0f;
+
+
     private Rigidbody2D _rb;
     private bool _isAscending = false;
 
@@ -62,12 +69,6 @@ public class AirBalloonFloatController : MonoBehaviour
             LerpAirBalloonAngleWithWind(windDirection);
         }
     }
-
-
-    public float AirBalloonTiltAngle = 0.0f;
-    private float _clampedAngle = 35.0f;
-    private const float _resetAngleSpeed = 0.01f;
-    private float _currentResetAngleSpeed = 0.0f;
 
     private void LerpAirBalloonAngleWithWind(Vector2 Direction)
     {
