@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class AirBalloonFloatController : MonoBehaviour
@@ -13,7 +12,6 @@ public class AirBalloonFloatController : MonoBehaviour
 
     void Awake()
     {
-        // Get the Rigidbody component
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,6 +29,9 @@ public class AirBalloonFloatController : MonoBehaviour
             _isAscending = false;
         }
 
+
+        _currentResetAngleSpeed += _resetAngleSpeed * Time.deltaTime;
+        AirBalloonTiltAngle = Mathf.Lerp(AirBalloonTiltAngle, 0, _currentResetAngleSpeed);
     }
 
     void FixedUpdate()
@@ -65,6 +66,8 @@ public class AirBalloonFloatController : MonoBehaviour
 
     public float AirBalloonTiltAngle = 0.0f;
     private float _clampedAngle = 35.0f;
+    private const float _resetAngleSpeed = 0.01f;
+    private float _currentResetAngleSpeed = 0.0f;
 
     private void LerpAirBalloonAngleWithWind(Vector2 Direction)
     {
@@ -78,8 +81,6 @@ public class AirBalloonFloatController : MonoBehaviour
 
 
         AirBalloonTiltAngle = angle;
-
-
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        _currentResetAngleSpeed = 0;
     }
 }
