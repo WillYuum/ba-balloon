@@ -8,5 +8,6 @@ namespace PrefabManager
     public class PrefabManager : MonoBehaviourSingleton<PrefabManager>
     {
         [SerializeField] private PrefabConfig _enemyPrefab;
+        [SerializeField] public PrefabConfig WindPrefab;
     }
 }

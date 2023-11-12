@@ -292,3 +292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab:
     _prefab: {fileID: 0}
+  WindPrefab:
+    _prefab: {fileID: 2445806975104196434, guid: f5e0d95c38dfdac4dafd8528e363a878,
+      type: 3}
