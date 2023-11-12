@@ -9,5 +9,6 @@ namespace PrefabManager
     {
         [SerializeField] private PrefabConfig _enemyPrefab;
         [SerializeField] public PrefabConfig WindPrefab;
+        [SerializeField] public PrefabConfig ButterfliesPrefab;
     }
 }
