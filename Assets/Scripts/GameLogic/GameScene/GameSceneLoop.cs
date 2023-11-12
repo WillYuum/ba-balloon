@@ -21,7 +21,12 @@ class GameSceneLoop : GameloopBehavior
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            SpawnWind(mousePosition);
+            SpawnWind(mousePosition, Vector3.right);
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            SpawnWind(mousePosition, Vector3.left);
         }
 #endif
 
@@ -44,12 +49,10 @@ class GameSceneLoop : GameloopBehavior
 
 
 
-    private GameObject SpawnWind(Vector2 position)
+    private GameObject SpawnWind(Vector3 spawnPosition, Vector3 windDirection)
     {
-        Vector3 spawnPosition = position;
         GameObject spawnedWind = PrefabManager.PrefabManager.instance.WindPrefab.CreateGameObject(spawnPosition, Quaternion.identity);
 
-        Vector3 windDirection = spawnPosition.x > 0 ? Vector2.left : Vector2.right;
         spawnedWind.GetComponent<WindVisuals>().SetWindDirection(windDirection);
 
         _behaviorUpdater.AddBehavioral(new BehavioralDataWithTimer()
