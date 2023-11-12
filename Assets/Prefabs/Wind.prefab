@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2445806975104196460}
   m_Layer: 0
   m_Name: Wind
-  m_TagString: Untagged
+  m_TagString: Wind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _windSprite: {fileID: 8223007648508522619}
+  WindDirection: {x: 0, y: 0}
 --- !u!61 &2445806975104196460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89,10 +90,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.13258362, y: -0.05582452}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -103,7 +104,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.8051834, y: 1.111649}
   m_EdgeRadius: 0
 --- !u!1 &7655942405882406350
 GameObject:

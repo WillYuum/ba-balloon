@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class AirBalloonController : MonoBehaviour
+public class AirBalloonFloatController : MonoBehaviour
 {
     [SerializeField] private float _ascentForce = 5f;     // The force applied when ascending
     [SerializeField] private float _descentForce = 2f;    // The force applied when descending
@@ -29,6 +30,7 @@ public class AirBalloonController : MonoBehaviour
         {
             _isAscending = false;
         }
+
     }
 
     void FixedUpdate()
@@ -45,5 +47,39 @@ public class AirBalloonController : MonoBehaviour
             _rb.AddForce(Vector2.down * _descentForce);
             _rb.velocity *= 1 - _damping * Time.fixedDeltaTime;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Check if the collider is the wind collider
+        if (collision.CompareTag("Wind"))
+        {
+            // Get the wind direction
+            Vector3 windDirection = collision.GetComponent<WindVisuals>().WindDirection;
+            // Apply the wind force
+            _rb.AddForce(windDirection);
+            LerpAirBalloonAngleWithWind(windDirection);
+        }
+    }
+
+
+    public float AirBalloonTiltAngle = 0.0f;
+    private float _clampedAngle = 35.0f;
+
+    private void LerpAirBalloonAngleWithWind(Vector2 Direction)
+    {
+        float angle = AirBalloonTiltAngle;
+        float windAngle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+
+
+        float windPush = 0.5f;
+        angle += windAngle > 0 ? windPush : -windPush;
+        angle = Mathf.Clamp(angle, -_clampedAngle, _clampedAngle);
+
+
+        AirBalloonTiltAngle = angle;
+
+
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }

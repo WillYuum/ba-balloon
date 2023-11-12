@@ -6,7 +6,7 @@ class GameSceneLoop : GameloopBehavior
 {
     private BehaviorUpdater _behaviorUpdater;
 
-    private float _windSpeedPerFrame = 0.1f;
+    private float _windSpeed = 0.3f;
     protected override void OnPlay()
     {
         print("GameSceneLoop OnPlay");
@@ -57,7 +57,7 @@ class GameSceneLoop : GameloopBehavior
             DurationOfBehavior = 5.0f,
             UpdateBehavior = () =>
             {
-                spawnedWind.transform.position += windDirection * _windSpeedPerFrame;
+                spawnedWind.transform.position += _windSpeed * Time.deltaTime * windDirection;
             },
             OnBehaviorEnd = () =>
             {
