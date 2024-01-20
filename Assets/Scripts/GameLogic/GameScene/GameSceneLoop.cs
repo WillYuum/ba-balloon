@@ -104,6 +104,40 @@ class GameSceneLoop : GameloopBehavior
 
         return spawnedWind;
     }
+
+    protected override void InitDebuggerHandler(List<DebuggerHandlerData> debuggerData)
+    {
+        TextMesh CreateTextIn3DSpace(string text, Vector3 position, float fontScale = .25f)
+        {
+            TextMesh textMesh = new GameObject("textMesh").AddComponent<TextMesh>();
+            textMesh.transform.position = position;
+            textMesh.text = text;
+            textMesh.fontSize = 20;
+            textMesh.transform.localScale = Vector3.one * fontScale;
+            textMesh.color = Color.black;
+            textMesh.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+            return textMesh;
+        }
+
+        TextMesh balloonDir = CreateTextIn3DSpace("Balloon Direction", Vector3.zero);
+
+
+        AirBalloonFloatController airBalloonFloatController = _airBalloon.GetComponent<AirBalloonFloatController>();
+
+
+        debuggerData.Add(new DebuggerHandlerData()
+        {
+            action = () =>
+            {
+                balloonDir.transform.position = _airBalloon.transform.position;
+                balloonDir.text = "Balloon Direction" + airBalloonFloatController.MoveDirection.ToString();
+            }
+        });
+
+
+    }
+
 }
 
 
