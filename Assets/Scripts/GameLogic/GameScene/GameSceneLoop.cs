@@ -1,12 +1,17 @@
 using UnityEngine;
 using GameloopCore;
+using PrefabManagerTool;
+using System.Collections.Generic;
 
 class GameSceneLoop : GameloopBehavior
 {
     private BehaviorUpdater _behaviorUpdater;
 
+    private ChallengeDirector _challengeDirector;
+
 
     private GameUntilLoseTimer _untilLoseTimer;
+    private AirBalloon _airBalloon;
 
     private float _windSpeed = 0.3f;
     protected override void OnPlay()
@@ -20,6 +25,13 @@ class GameSceneLoop : GameloopBehavior
         var gameScreenConnection = GameUI.instance.GetScreen<GameScreen>().CreateConnection<ConnectTimerWithUI>();
 
         _untilLoseTimer = new GameUntilLoseTimer(startingTimer, gameScreenConnection);
+
+
+
+        _airBalloon = GameObject.Find("AirBalloon").GetComponent<AirBalloon>();
+
+        _challengeDirector = GameObject.Find("ChallengeDirector").GetComponent<ChallengeDirector>();
+        _challengeDirector.StartChallenge(_airBalloon.gameObject);
     }
 
     protected override void OnLoopUpdate()
@@ -39,7 +51,7 @@ class GameSceneLoop : GameloopBehavior
         else if (Input.GetKeyDown(KeyCode.B))
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            PrefabManager.PrefabManager.instance.ButterfliesPrefab.CreateGameObject(mousePosition, Quaternion.identity);
+            PrefabManager.instance.ButterfliesPrefab.CreateGameObject(mousePosition, Quaternion.identity);
         }
 #endif
 
@@ -73,7 +85,7 @@ class GameSceneLoop : GameloopBehavior
 
     private GameObject SpawnWind(Vector3 spawnPosition, Vector3 windDirection)
     {
-        GameObject spawnedWind = PrefabManager.PrefabManager.instance.WindPrefab.CreateGameObject(spawnPosition, Quaternion.identity);
+        GameObject spawnedWind = PrefabManager.instance.WindPrefab.CreateGameObject(spawnPosition, Quaternion.identity);
 
         spawnedWind.GetComponent<WindVisuals>().SetWindDirection(windDirection);
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PrefabManager.Configs
+namespace PrefabManagerTool.Configs
 {
     [System.Serializable]
     public class PrefabConfig

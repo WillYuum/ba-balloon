@@ -8,6 +8,8 @@ public class AirBalloonFloatController : MonoBehaviour
     [SerializeField] private float _damping = 0.5f;       // Damping factor for reducing momentum when not pressing space
 
 
+    public Vector2 MoveDirection { get; private set; } = Vector2.zero;
+
     [HideInInspector] public float AirBalloonTiltAngle = 0.0f;
     private float _clampedAngle = 35.0f;
     private const float _resetAngleSpeed = 0.01f;
@@ -39,6 +41,9 @@ public class AirBalloonFloatController : MonoBehaviour
 
         _currentResetAngleSpeed += _resetAngleSpeed * Time.deltaTime;
         AirBalloonTiltAngle = Mathf.Lerp(AirBalloonTiltAngle, 0, _currentResetAngleSpeed);
+
+
+        MoveDirection = _rb.velocity;
     }
 
     void FixedUpdate()
